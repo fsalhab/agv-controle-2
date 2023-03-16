@@ -1,0 +1,71 @@
+
+Recebe_angulo{
+    recebe e retorna o angulo
+}
+
+Recebe_distancia{
+    recebe e retorna a distancia
+}
+
+Recebe_parada{
+    recebe se parou
+}
+
+aguardar{
+    função para deixar a maquina
+}
+
+Recebe_fim{
+     recebe se a agv chegou ao fim
+}
+
+parar{
+     finalizar o percurso
+}
+
+Envia_angulo{
+    envia ang
+}
+
+Envia_distancia{
+    envia dist
+}
+
+Envia_status{
+    envia status
+    parado
+    andando
+    em parada
+}
+
+
+segueLinha{
+
+    }
+
+
+função_principal{
+
+    
+    recebe_fim
+    enquanto nao for fim {
+        
+        Recebe_distancia
+        Recebe_angulo
+        Recebe_parada
+        Envia_distancia
+        Envia_angulo
+
+        se estiver em parada{
+            Enviastatus;
+            aguardar;
+
+        }
+
+        Enviastatus
+        segueLinha
+        Recebe_fim
+    }
+    
+    liga_desliga;
+}
