@@ -138,7 +138,7 @@ void segueLinha(float dist, float ang)
 
 void Desligar()
 {
-    exit();
+    exit(0);
 }
 
 void Remergencia()
