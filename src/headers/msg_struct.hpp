@@ -34,21 +34,26 @@ SOFTWARE.
 #include <cstdio>
 #include <fstream>
 
-
-namespace comms {
-    struct msgStruct {
+namespace comms
+{
+    struct msgStruct
+    {
         float ang;
         float dist;
         float c;
         float d;
+        int parada;
+        int fim;
+        int status;
     };
 
-    template<typename... Args>
-    void log(const char* message, Args... args) {
+    template <typename... Args>
+    void log(const char *message, Args... args)
+    {
 #ifdef COMMS_LOG
-        time_t     now = time(0);
-        struct tm  tstruct;
-        char       currTime[80] = {0};
+        time_t now = time(0);
+        struct tm tstruct;
+        char currTime[80] = {0};
         tstruct = *localtime(&now);
         // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
         // for more information about date/time format
@@ -57,11 +62,12 @@ namespace comms {
         char log_path[] = "comms.log";
 
         std::ostringstream oss;
-        oss << "[TRACE]" << ":comms:" << currTime << ":";
+        oss << "[TRACE]"
+            << ":comms:" << currTime << ":";
         auto log_init_str = oss.str();
 
         std::ofstream logFile;
-        FILE* pFile;
+        FILE *pFile;
         pFile = fopen(log_path, "a+");
 
         fprintf(pFile, log_init_str.c_str());
@@ -69,11 +75,11 @@ namespace comms {
         fprintf(pFile, ";\n");
         fclose(pFile);
 
-    #ifdef COMMS_DEBUG
-            printf(log_init_str.c_str());
-            printf(message, args...);
-            printf(";\n");
-    #endif // COMMS_DEBUG
+#ifdef COMMS_DEBUG
+        printf(log_init_str.c_str());
+        printf(message, args...);
+        printf(";\n");
+#endif // COMMS_DEBUG
 
 #endif // COMMS_LOG
     }
