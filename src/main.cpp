@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <string.h>
 #include <unistd.h>
+#include <pthread.h>
 #include "headers/comms_control.hpp"
 
 #define COMMS_LOG 1   // create logs
@@ -13,6 +14,13 @@ using namespace std;
 #define K2 100
 
 #define MDISTANCIA 100
+
+void *executar_binario(void *arg)
+{
+    string nome_do_binario = *(static_cast<std::string *>(arg));
+    system(nome_do_binario.c_str());
+    return NULL;
+}
 
 // Definindo as constantes que representam os estados do AGV
 const int PARADO = 0;
@@ -136,8 +144,9 @@ void segueLinha(float dist, float ang)
     }
 }
 
-void Desligar()
+void Desligar(pthread_t thread_id)
 {
+    pthread_cancel(thread_id);
     exit(0);
 }
 
@@ -152,8 +161,10 @@ void Remergencia()
 }
 int main(int argc, char const *argv[])
 {
+    pthread_t thread_id;
     //execucao do script de inicializacao
-
+    string nome_do_binario = "envia_supervisor" pthread_t thread_id;
+    pthread_create(&thread_id, NULL, executar_binario, &nome_do_binario);
     int fim;
     int parada = 0;
     float dist, ang;
@@ -180,5 +191,5 @@ int main(int argc, char const *argv[])
         fim = Rfim();
     }
     Enviastatus(FIM);
-    Desligar();
+    Desligar(thread_id);
 }
