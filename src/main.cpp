@@ -1,16 +1,3 @@
-Skip to content
-        Search or
-    jump to… Pull requests
-                Issues
-                    Codespaces
-                        Marketplace
-                            Explore
-
-            @matheuscmr
-                fsalhab /
-            agv -
-        controle - 2 Public Fork your own copy of fsalhab / agv - controle - 2 Code Issues Pull requests Actions Projects Wiki Security Insights agv - controle - 2 / src / main.cpp @matheuscmr matheuscmr modified : src / main.cpp Latest commit c717aba 9 minutes ago History 1 contributor 195 lines(168 sloc) 4.79 KB
-
 #include <stdio.h>
 #include <wired.h>
 #include <cstdlib>
@@ -21,7 +8,7 @@ Skip to content
 
 #define COMMS_LOG 1   // create logs
 #define COMMS_DEBUG 1 // log to stdout
-                                                                                                                                                                                                                             using namespace std;
+using namespace std;
 
 #define K1 100
 #define K2 100
