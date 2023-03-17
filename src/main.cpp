@@ -163,7 +163,7 @@ int main(int argc, char const *argv[])
 {
     pthread_t thread_id;
     //execucao do script de inicializacao
-    string nome_do_binario = "envia_supervisor" pthread_t thread_id;
+    string nome_do_binario = "envia_supervisor";
     pthread_create(&thread_id, NULL, executar_binario, &nome_do_binario);
     int fim;
     int parada = 0;
