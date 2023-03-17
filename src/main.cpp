@@ -136,11 +136,20 @@ void segueLinha(float dist, float ang)
     }
 }
 
-Void Desligar()
+void Desligar()
 {
     //de
 }
 
+void Remergencia()
+{
+    char *nome_var = getenv("STATUS_AGV");
+    int status = stoi(nome_var);
+    if (status == EMERGENCIA)
+    {
+        Desligar();
+    }
+}
 int main(int argc, char const *argv[])
 {
     //execucao do script de inicializacao
@@ -153,7 +162,7 @@ int main(int argc, char const *argv[])
     fim = Rfim();
     while (fim == 0)
     {
-
+        Remergencia();
         dist = Rdist();
         ang = Rang();
         parada = Rparada();

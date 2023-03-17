@@ -3,6 +3,7 @@
         "xstring": "cpp",
         "atomic": "cpp",
         "memory": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "string": "cpp"
     }
 }
