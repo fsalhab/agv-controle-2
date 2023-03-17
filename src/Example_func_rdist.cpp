@@ -8,23 +8,23 @@
 #define COMMS_DEBUG 1 // log to stdout
 using namespace std;
 
-float Rang()
+float Rdist()
 {
     //recebe o angulo da parte de processamento de imagem
     comms::msgStruct msg;
     msg = comms::getData();
-    return msg.ang;
+    return msg.dist;
 }
 
 int main(int argc, char const *argv[])
 {
-    float ang;
+    float dist;
     comms::initComms("localhost", 5556);
     std::cout << "connected" << '\n';
     while (true)
     {
-        ang = Rang();
-        cout << "o valor de angulo recebido foi" << ang << "\n";
+        dist = Rdist();
+        cout << "o valor de angulo recebido foi" << dist << "\n";
         sleep(1);
     }
 }
