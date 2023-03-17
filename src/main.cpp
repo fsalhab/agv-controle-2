@@ -30,7 +30,7 @@ const int FIM = -1;
 
 float Rang()
 {
-    //recebe o angulo da parte de processamento de imagem
+    // recebe o angulo da parte de processamento de imagem
     comms::msgStruct msg;
     msg = comms::getData();
     return msg.ang
@@ -38,7 +38,7 @@ float Rang()
 
 float Rdist()
 {
-    //recebe o angulo da parte de processamento de imagem
+    // recebe o angulo da parte de processamento de imagem
     comms::msgStruct msg;
     msg = comms::getData();
     return msg.dist
@@ -46,7 +46,7 @@ float Rdist()
 
 int Rparada()
 {
-    //recebe se a AGV esta em um ponto de parada do processamento de imagem
+    // recebe se a AGV esta em um ponto de parada do processamento de imagem
     comms::msgStruct msg;
     msg = comms::getData();
     return msg.parada
@@ -109,13 +109,13 @@ void segueLinha(float dist, float ang)
 {
 
     for (int i = 0; i < 4; i++)
-    { //Loop que passa por cada roda.
-        //roda 0 -> superior direita, roda 1 -> superior esquerda, roda 2 -> inferior direita, roda 3 -> inferior esquerda.
-        float speed = force; //essa força é a velocidade que as rodas rodam quando angulo e distancia = 0
+    { // Loop que passa por cada roda.
+        // roda 0 -> superior direita, roda 1 -> superior esquerda, roda 2 -> inferior direita, roda 3 -> inferior esquerda.
+        float speed = force; // essa força é a velocidade que as rodas rodam quando angulo e distancia = 0
         if (ang > offset2 && (i == 0 || i == 2))
         {
 
-            speed = force * (1 - ang / 180 * K2); //k2 decide a velocidade em que o agv roda.
+            speed = force * (1 - ang / 180 * K2); // k2 decide a velocidade em que o agv roda.
         }
         if (ang < -1 * offset2 && (i == 1 || i == 3))
         {
@@ -123,14 +123,14 @@ void segueLinha(float dist, float ang)
             speed = force * (1 - ang / -180 * K2);
         }
         if (abs(ang) < offset2 && dist > offset && (i == 0 || i == 3))
-        { //Mathf.Abs() retorna o módulo do valor passado.
+        { // Mathf.Abs() retorna o módulo do valor passado.
 
-            speed = force * (1 - dist / MDISTANCIA * K1); //maiordistancia é a maior distancia que a câmera pega para cada lado.
+            speed = force * (1 - dist / MDISTANCIA * K1); // maiordistancia é a maior distancia que a câmera pega para cada lado.
         }
         if (abs(ang) < offset2 && dist < -1 * offset && (i == 1 || i == 2))
         {
 
-            speed = force * (1 - dist / -1 * MDISTANCIA * K1); //k1 decide o angulo maximo que o agv anda diagonalmente.
+            speed = force * (1 - dist / -1 * MDISTANCIA * K1); // k1 decide o angulo maximo que o agv anda diagonalmente.
         }
         bool sentido = true;
 
@@ -162,9 +162,10 @@ void Remergencia()
 int main(int argc, char const *argv[])
 {
     pthread_t thread_id;
-    //execucao do script de inicializacao
+    // execucao do script de inicializacao
     string nome_do_binario = "envia_supervisor";
     pthread_create(&thread_id, NULL, executar_binario, &nome_do_binario);
+
     int fim;
     int parada = 0;
     float dist, ang;
