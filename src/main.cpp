@@ -23,6 +23,7 @@ const int FIM = -1;
 float Rang()
 {
     //recebe o angulo da parte de processamento de imagem
+    comms::msgStruct msg;
     msg = comms::getData();
     return msg.ang
 }
@@ -30,6 +31,7 @@ float Rang()
 float Rdist()
 {
     //recebe o angulo da parte de processamento de imagem
+    comms::msgStruct msg;
     msg = comms::getData();
     return msg.dist
 }
@@ -37,6 +39,7 @@ float Rdist()
 int Rparada()
 {
     //recebe se a AGV esta em um ponto de parada do processamento de imagem
+    comms::msgStruct msg;
     msg = comms::getData();
     return msg.parada
 }
@@ -50,6 +53,7 @@ void aguardar()
 int Rfim()
 {
     // recebe se a AGV finalizou o percurso do processamento de imagem
+    comms::msgStruct msg;
     msg = comms::getData();
     return msg.fim
 }
@@ -137,14 +141,13 @@ Void Desligar()
     //de
 }
 
-int main()
+int main(int argc, char const *argv[])
 {
     //execucao do script de inicializacao
 
     int fim;
     int parada = 0;
     float dist, ang;
-    comms::msgStruct msg;
     comms::initComms("localhost", 5556);
     std::cout << "connected" << '\n';
     fim = Rfim();
