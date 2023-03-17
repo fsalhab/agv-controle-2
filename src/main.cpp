@@ -47,7 +47,7 @@ int Rparada()
 void aguardar()
 {
     // se estiver num ponto de parada, aguarda 50 segundos
-    wait(50);
+    sleep(50);
 }
 
 int Rfim()

@@ -44,7 +44,6 @@ namespace comms
         float d;
         int parada;
         int fim;
-        int status;
     };
 
     template <typename... Args>
